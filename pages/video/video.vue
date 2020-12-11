@@ -1,0 +1,93 @@
+<template>
+	<view class="box">
+		<view class="title" v-for="item in newsList" :key="item.courseId" >
+			<image :src="item.courseImage" mode="scaleToFill" @click="goSuperMarket(item)"></image>
+			<view class="box_bottom">
+				<view class="fl">
+					<view class="fl_top">{{item.courseTitle}}</view>
+					<view class="fl_bottom">{{item.courseTitle}}</view>
+				</view>
+				<van-rate v-model="value" icon="like" void-icon="like-o" />
+				<view class="fr">{{item.collectCount}}个收藏</view>
+			</view>
+		</view>
+		
+	</view>
+</template>
+
+<script>
+	import {
+			myRequestPost
+		} from '@/utils/request.js'
+	import { Rate } from '@/components/uni/uni-rate/uni-rate.vue';
+		export default {
+			data() {
+				return {
+					newsList: [],
+					value: 1,
+				}
+			},
+			onLoad() {
+				this.getNewsList();
+			},
+			methods: {
+				async getNewsList() {
+					const res = await myRequestPost("/ops/api/source/getLocalVideoList",
+						{"userId":null,"pageNo":0,"pageSize":50}
+					)
+					this.newsList = res.datas
+					console.log(this.newsList)
+					console.log(res,"ddddddd");
+				},
+				goSuperMarket(item){
+					console.log('111111')
+					uni.navigateTo({
+						url:`../vediodetail/vediodetail?id=${item.courseId}`
+					})
+				}
+			},
+			
+			components: {
+				Rate,
+			}
+		}
+</script>
+
+<style lang="less">
+	.box{
+		display: flex;
+		flex-direction: column;
+		padding: 30rpx;
+		.title{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			image{
+				border-radius: 5%;
+				height: 420rpx;
+				width: 100%;
+			}
+			.box_bottom{
+				padding-top: 20rpx ;
+				height: 135rpx;
+				.fl{
+					float: left;
+					.fl_top{
+						font-weight: 700;
+						font-size:20px;
+						margin-bottom: 10rpx;
+					}
+					.fl_bottom{
+						font-size: 14px;
+						color: rgb(185,185,185);
+					}
+				}
+				.fr{
+					float: right;
+				}
+			}
+		}
+		
+	}
+	
+</style>

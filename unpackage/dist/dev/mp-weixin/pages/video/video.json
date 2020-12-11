@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "视频",
+  "usingComponents": {
+    "rate": "/components/uni/uni-rate/uni-rate"
+  }
+}
