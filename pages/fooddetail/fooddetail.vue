@@ -27,8 +27,20 @@
 		<!-- 做法步骤 -->
 		<view class="food-step">
 			<image :src="detail.prepareSteps.img" mode="widthFix"></image>
-			<text>{{detail.prepareSteps.desc}}</text>
-			<view v-for="item in detail.steps" :key="item.id" mode="widthFix">
+			<!-- 备菜步骤 -->
+			<view class="inrduc-center">
+				<view class="indruc-l"></view>
+				<text>备菜步骤</text>
+				<view class="indruc-r"></view>
+			</view>
+			<text class="food-step-desc">{{detail.prepareSteps.desc}}</text>
+			<!-- 做法步骤 -->
+			<view class="inrduc-center">
+				<view class="indruc-l"></view>
+				<text>做法步骤</text>
+				<view class="indruc-r"></view>
+			</view>
+			<view v-for="item in detail.steps" :key="item.id" mode="widthFix" class="food-step-main">
 				<image :src="item.image"></image>
 				<view class="steps">
 					<text>{{item.no}}/</text>
@@ -52,7 +64,7 @@
 		},
 		onLoad(options) {
 			this.id = options.id;
-			this.getSwipers();
+			this.getSwipers()
 		},
 		methods: {
 			async getSwipers() {
@@ -63,7 +75,6 @@
 					this.detail = result.cookbook;
 				}
 				console.log(result)
-
 			}
 		}
 	}
@@ -74,6 +85,7 @@
 		display: flex;
 		box-sizing: border-box;
 		flex-wrap: wrap;
+		font-family: "楷体";
 
 		.food-head {
 			image {
@@ -99,33 +111,30 @@
 			width: 710rpx;
 			margin-top: 100rpx;
 			margin-left: 10px;
-			font-family: "楷体";
-			font-size: 18px;
-			text-indent: 2em;
 			color: #979797;
+		}
 
-			.inrduc-center {
-				position: relative;
-				left: 200rpx;
-				top: 20rpx;
-				color: #222222;
-				margin-bottom: 40rpx;
+		.inrduc-center {
+			position: relative;
+			width: 680rpx;
+			left: 200rpx;
+			top: 20rpx;
+			text-indent:2em;
+			font-size: 20px;
+			color: #222222;
+			margin-bottom: 40rpx;
 
-				view {
-					position: absolute;
-					top: 8px;
-					left: -45rpx;
-					background-color: orange;
-					width: 45px;
-					height: 2px;
-				}
+			view {
+				position: absolute;
+				top: 8px;
+				left: -45rpx;
+				background-color: orange;
+				width: 45px;
+				height: 2px;
+			}
 
-				.indruc-r {
-					left: 240rpx;
-				}
-				.indruc-main{
-					text-indent: 2em;
-				}
+			.indruc-r {
+				left: 270rpx;
 			}
 
 		}
@@ -137,6 +146,7 @@
 			color: #333;
 			margin: 0 auto;
 			border-bottom: 1px solid #ccc;
+
 			text {
 				margin-left: 130rpx;
 			}
@@ -157,10 +167,21 @@
 				margin-left: 50rpx;
 			}
 
+			.food-step-desc {
+				width: 650rpx;
+				margin-left: 60rpx;
+				line-height: 18px;
+				margin-bottom: 20rpx;
+			}
+
 			.steps {
 				display: flex;
 				box-sizing: border-box;
 				margin: 5px 0 5px 25px;
+			}
+
+			.food-step-main {
+				width: 680rpx;
 			}
 		}
 	}

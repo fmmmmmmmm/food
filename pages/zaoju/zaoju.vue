@@ -4,8 +4,14 @@
 		<view v-for="item in zaojulist" :key="item.id" class="items" mode="widthFix" @click="itemClick(item)">
 			<view class="item-main">
 				<image :src="item.imgLarge"></image>
-				<view class="item-text"> <text>{{item.name}}</text>
-					<text class="text-right">{{item.collectCount}}人收藏</text>
+				<view class="item-text">
+					<view>
+						<text>{{item.name}}</text>
+					</view>
+					<view>
+						<uni-icons type="heart" size="20"></uni-icons>
+						<text class="text-right">{{item.collectCount}}人收藏</text>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -16,18 +22,19 @@
 	import {
 		myRequestPost
 	} from '@/utils/request.js';
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	// import foodlist from '@/components/foodlist/foodlist.vue'
 	export default {
-		// components:{
-		// 	foodlist
-		// },
+		components: {
+			uniIcons
+		},
 		data() {
 			return {
 				zaojulist: [],
 			};
 		},
 		onLoad() {
-			this.getSwipers();
+			this.getSwipers()
 		},
 		methods: {
 			async getSwipers() {
@@ -57,18 +64,22 @@
 		.items {
 			.item-main {
 				margin: 0 25rpx;
-	
+
 				image {
 					width: 700rpx;
 					height: 450rpx;
 					border-radius: 20rpx;
 				}
-	
+
 				.item-text {
-					margin: 10rpx 0 30rpx;
-	
+					display: flex;
+					justify-content: space-between;
+					margin: 15rpx 0 15rpx 10rpx;
+					font-size: 30rpx;
+
 					.text-right {
 						float: right;
+						margin-right: 30rpx;
 					}
 				}
 			}

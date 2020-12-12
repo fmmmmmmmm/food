@@ -16,12 +16,17 @@
 			<view class="title">
 				菜谱推荐
 			</view>
-			<view v-for="item in menu" :key="item.id" class="item">
+			<view v-for="item in menu" :key="item.id" class="item" @click="itemClick(item)">
 				<view class="item-main">
 					<image :src="item.imgLarge"></image>
 					<view class="item-text">
-						<text>{{item.name}}</text>
-						<text class="second">{{item.collectCount}}人收藏</text>
+						<view>
+							<text>{{item.name}}</text>
+						</view>
+						<view>
+							<uni-icons type="heart" size="20"></uni-icons>
+							<text class="text-right">{{item.collectCount}}人收藏</text>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -33,6 +38,7 @@
 	import uniSearchBar from '@/components/uni/uni-search-bar/uni-search-bar.vue';
 	import uniGrid from "@/components/uni/uni-grid/uni-grid.vue"
 	import uniGridItem from "@/components/uni/uni-grid-item/uni-grid-item.vue";
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	import {
 		myRequestPost
 	} from '@/utils/request.js'
@@ -40,7 +46,8 @@
 		components: {
 			uniSearchBar,
 			uniGrid,
-			uniGridItem
+			uniGridItem,
+			uniIcons
 		},
 		data() {
 			return {
@@ -71,7 +78,7 @@
 		},
 		onLoad() {
 			this.getSwipers(),
-			this.getMenu()
+				this.getMenu()
 		},
 		methods: {
 			async getSwipers() {
@@ -94,8 +101,12 @@
 				uni.navigateTo({
 					url: item.path
 				})
+			},
+			itemClick(item) {
+				uni.navigateTo({
+					url: '/pages/fooddetail/fooddetail?id=' + item.id
+				})
 			}
-
 		}
 	}
 </script>
@@ -147,10 +158,14 @@
 					}
 
 					.item-text {
-						margin: 10rpx 0 30rpx;
+						display: flex;
+						justify-content: space-between;
+						margin: 15rpx 0 15rpx 10rpx;
+						font-size: 30rpx;
 
-						.second {
+						.text-right {
 							float: right;
+							margin-right: 30rpx;
 						}
 					}
 				}
