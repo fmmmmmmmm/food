@@ -25,6 +25,12 @@
         {
           "name": "pages/video/video",
           "pathName": "pages/video/video",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/vediodetail/vediodetail",
+          "pathName": "pages/vediodetail/vediodetail",
           "scene": null
         }
       ]

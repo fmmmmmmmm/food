@@ -1,7 +1,7 @@
 <template>
 	<view class="box">
-		<view class="title" v-for="item in newsList" :key="item.courseId" >
-			<image :src="item.courseImage" mode="scaleToFill" @click="goSuperMarket(item)"></image>
+		<view class="title" v-for="(item,index) in newsList" :key="item.courseId" >
+			<image :src="item.courseImage" mode="scaleToFill" @click="goSuperMarket" :data-index="index" :data-item="item"></image>
 			<view class="box_bottom">
 				<view class="fl">
 					<view class="fl_top">{{item.courseTitle}}</view>
@@ -36,14 +36,25 @@
 						{"userId":null,"pageNo":0,"pageSize":50}
 					)
 					this.newsList = res.datas
-					console.log(this.newsList)
-					console.log(res,"ddddddd");
+					// console.log(this.newsList)
+					// console.log(res)
 				},
-				goSuperMarket(item){
-					console.log('111111')
+				// goSuperMarket(item){
+				// 	// console.log('111111')
+				// 	uni.navigateTo({
+				// 		url:`../vediodetail/vediodetail`
+				// 	})
+				// }
+				goSuperMarket(e){
+					
+					// console.log(e.currentTarget.dataset.item)
+					const userinfo = e.currentTarget.dataset.item;
+					// console.log(userinfo)
+					uni.setStorageSync("userinfo",userinfo);
 					uni.navigateTo({
-						url:`../vediodetail/vediodetail?id=${item.courseId}`
+						url:`../vediodetail/vediodetail`
 					})
+					
 				}
 			},
 			

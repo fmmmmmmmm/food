@@ -1,1 +1,8 @@
-/* pages/vediodetail/vediodetail.wxss */
+
+.bl {
+	float: left
+}
+.br {
+	float: right
+}
+

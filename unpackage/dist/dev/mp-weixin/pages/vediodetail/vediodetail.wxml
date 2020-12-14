@@ -1,1 +1,1 @@
-<view>ddd</view>
+<view class="box"><view class="lp"><video src="{{userinfo.playUrl}}"></video></view><view class="bottom"><view class="bl">{{userinfo.desc}}</view><view class="br">{{"观看次数："+userinfo.videoWatchcount}}</view></view></view>
