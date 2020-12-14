@@ -1,0 +1,27 @@
+image {
+  width: 100%;
+}
+.recommend {
+  width: 95%;
+  margin: 20rpx auto;
+}
+.recommend .recommend-img {
+  margin: 0 auto;
+}
+.recommend .recommend-img image {
+  width: 712rpx;
+  height: 370rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+}
+.recommend .recommend-foot {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  color: #885e46;
+  font-family: sans-serif;
+}
+
