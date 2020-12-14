@@ -1,7 +1,7 @@
 <template>
-	<view>
+	<view class="recommend">
 		这是菜谱列表页面
-		<!-- <view v-for="item in menu" :key="item.id" class="items" mode="widthFix">
+		<!-- <view v-for="item in menu" :key="item.id" class="items" mode="widthFix" >
 			<view class="item-main">
 				<image :src="item.imgLarge" @click="itemClick(item)"></image>
 				<view class="item-text">
@@ -37,9 +37,8 @@
 		data() {
 			return {
 				menu: [],
-				limit: 10,
+				limit:10,
 				flag: false,
-
 			};
 		},
 		onLoad(options) {
@@ -50,7 +49,7 @@
 		methods: {
 			async getSwipers() {
 				let result = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
-					"dc": "RRQZ",
+					"dc":"RDKX",
 					"cookbookType": "all",
 					"start": 0,
 					"limit": this.limit,
@@ -62,7 +61,7 @@
 				console.log(result)
 			},
 			onReachBottom() {
-				this.limit += 10;
+				this.limit +=10;
 				if (this.limit <= 300) {
 					this.getSwipers();
 				} else {
@@ -78,4 +77,3 @@
 		}
 	}
 </script>
-

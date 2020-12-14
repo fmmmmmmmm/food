@@ -16,9 +16,10 @@
 			<view class="title">
 				菜谱推荐
 			</view>
-			<view v-for="item in menu" :key="item.id" class="item" @click="itemClick(item)">
+			<!-- 菜谱列表 -->
+			<view v-for="item in menu" :key="item.id" class="item" >
 				<view class="item-main">
-					<image :src="item.imgLarge"></image>
+					<image :src="item.imgLarge" @click="itemClick(item)"></image>
 					<view class="item-text">
 						<view>
 							<text>{{item.name}}</text>
@@ -61,7 +62,7 @@
 					{
 						icons: "t-icon t-icon-wan",
 						title: "烤箱菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/oven/oven"
 					},
 					{
 						icons: "t-icon t-icon-xiaolongbao",

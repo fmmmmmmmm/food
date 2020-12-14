@@ -26,7 +26,8 @@
             "style" : {
 				"navigationBarTitleText": "灶具菜谱"
 			}
-        },{
+        },
+		{
             "path" : "pages/square/square",
             "style" : {
 				"navigationBarTitleText": "来到广场"
@@ -38,13 +39,19 @@
 				"navigationBarTitleText": "菜谱详情"
 			}
         }
-  
+        ,{
+            "path" : "pages/oven/oven",
+            "style" : {
+				"navigationBarTitleText": "烤箱菜谱"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "美食",
 		"navigationBarBackgroundColor": "#E9A06F",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"onReachBottomDistance":20
 	},
 	"tabBar": {
 		"list": [{

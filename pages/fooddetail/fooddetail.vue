@@ -1,7 +1,7 @@
 <template>
 	<view class="items">
 		<view class="food-head">
-			<image :src="detail.imgSmall"></image>
+			<image :src="detail.imgSmall" @click="previewImg(detail.imgSmall)"></image>
 		</view>
 		<view class="food-name">
 			<text>{{detail.name}}</text>
@@ -75,7 +75,17 @@
 					this.detail = result.cookbook;
 				}
 				console.log(result)
-			}
+			},
+			previewImg(imageUrl) {
+				console.log(imageUrl) // http://192.168.100.251:8970/6_1597822634094.png
+				var images = [];
+				images.push(imageUrl);
+				console.log(images) 
+				uni.previewImage({ // 预览图片  图片路径必须是一个数组 => ["http://192.168.100.251:8970/6_1597822634094.png"]
+					current: 0,
+					urls: images
+				});
+			},
 		}
 	}
 </script>
@@ -119,7 +129,7 @@
 			width: 680rpx;
 			left: 200rpx;
 			top: 20rpx;
-			text-indent:2em;
+			text-indent: 2em;
 			font-size: 20px;
 			color: #222222;
 			margin-bottom: 40rpx;
